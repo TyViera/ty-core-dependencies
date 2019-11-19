@@ -22,6 +22,7 @@
     <java.version>1.8</java.version>
 
     <guava.version>21.0</guava.version>
+    <javafaker.version>1.0.1</javafaker.version>
 
     <jfrog-plugin.version>2.6.1</jfrog-plugin.version>
   </properties>
@@ -55,6 +56,11 @@
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
         <version>${guava.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.javafaker</groupId>
+        <artifactId>javafaker</artifactId>
+        <version>${javafaker.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
