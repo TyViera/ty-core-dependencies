@@ -10,7 +10,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@JsonInclude(Include.NON_EMPTY)
+@JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true, value = "suppressed")
 public final class CoreException extends RuntimeException {
 

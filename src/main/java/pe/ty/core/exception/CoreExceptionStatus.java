@@ -1,10 +1,11 @@
 package pe.ty.core.exception;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum CoreExceptionStatus {
 
   BAD_REQUEST(400, ".bad-request"),
@@ -12,11 +13,13 @@ public enum CoreExceptionStatus {
   FORBIDDEN(403, ".forbidden"),
   NOT_FOUND(404, ".not-found"),
   CONFLICT(409, ".conflict"),
-  TIMEOUT(504, ".timeout"),
-  EXTERNAL_ERROR(500, ".external-error"),
+  PRECONDITION_FAILED(412, ".precondition-failed"),
+  TIMEOUT(503, ".timeout"),
+  EXTERNAL_ERROR(503, ".external-error"),
+  INVALID_EXTERNAL_DATA(500, ".invalid-external-data"),
   UNEXPECTED(500, ".unexpected");
 
   private final Integer httpStatus;
-  private final String code;
+  private final String propertyName;
 
 }
