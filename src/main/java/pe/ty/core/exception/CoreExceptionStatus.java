@@ -17,7 +17,8 @@ public enum CoreExceptionStatus {
   TIMEOUT(503, ".timeout"),
   EXTERNAL_ERROR(503, ".external-error"),
   INVALID_EXTERNAL_DATA(500, ".invalid-external-data"),
-  UNEXPECTED(500, ".unexpected");
+  UNEXPECTED(500, ".unexpected"),
+  CUSTOM(-1, "");
 
   private final Integer httpStatus;
   private final String propertyName;

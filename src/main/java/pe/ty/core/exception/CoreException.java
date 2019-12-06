@@ -30,9 +30,16 @@ public final class CoreException extends RuntimeException {
   @JsonIgnore
   private Throwable cause;
 
+  @JsonIgnore
+  private boolean resolved;
+
+  @JsonIgnore
+  private Integer httpStatusCode;
+
   @Builder(toBuilder = true)
   CoreException(Throwable cause, String message, String code, String component,
-      CoreExceptionType errorType, Map<String, String> headers, CoreExceptionStatus status) {
+      CoreExceptionType errorType, Map<String, String> headers, CoreExceptionStatus status,
+      Integer httpStatusCode, boolean resolved) {
     super(message, cause);
     this.errorType = Optional.ofNullable(errorType).orElse(CoreExceptionType.TECHNICAL);
     this.status = Optional.ofNullable(status).orElse(CoreExceptionStatus.UNEXPECTED);
@@ -41,6 +48,8 @@ public final class CoreException extends RuntimeException {
     this.message = message;
     this.cause = cause;
     this.headers = headers;
+    this.httpStatusCode = httpStatusCode;
+    this.resolved = resolved;
   }
 
   @Override
@@ -64,6 +73,11 @@ public final class CoreException extends RuntimeException {
   @JsonIgnore
   public StackTraceElement[] getStackTrace() {
     return super.getStackTrace();
+  }
+
+  public CoreException markAsResolved() {
+    this.resolved = true;
+    return this;
   }
 
 }
